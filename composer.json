@@ -30,9 +30,12 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.1",
+        "friendsofphp/php-cs-fixer": "^3.75",
+        "phpstan/phpstan": "^2.1",
         "symfony/maker-bundle": "^1.63",
         "symfony/stopwatch": "7.3.*",
-        "symfony/web-profiler-bundle": "7.3.*"
+        "symfony/web-profiler-bundle": "7.3.*",
+        "vimeo/psalm": "^6.12"
     },
     "config": {
         "allow-plugins": {
