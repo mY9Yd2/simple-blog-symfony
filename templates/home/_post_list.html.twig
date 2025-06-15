@@ -1,8 +1,10 @@
 {% for post in posts %}
+    {% set body = post.body|slice(0, 100) ~ (post.body|length > 100 ? '...' : '') %}
+
     <article class="mb-5 text-center">
         <h2>{{ post.title }}</h2>
 
-        <p>{{ post.body|slice(0, 100) ~ (post.body|length > 100 ? '...' : '') }}</p>
+        <p>{{ body }}</p>
 
         <small class="text-secondary">
             <div>By {{ post.author.username }}</div>

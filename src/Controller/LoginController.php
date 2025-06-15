@@ -16,15 +16,23 @@ class LoginController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('login/login.html.twig', [
-            'last_username' => $lastUsername,
+        return $this->render('@EasyAdmin/page/login.html.twig', [
             'error' => $error,
+            'last_username' => $lastUsername,
+            'page_title' => 'Simple Blog',
+            'csrf_token_intention' => 'authenticate',
+            'target_path' => $this->generateUrl('app_home'),
+            'username_label' => 'Username',
+            'password_label' => 'Password',
+            'sign_in_label' => 'Log in',
+            'username_parameter' => '_username',
+            'forgot_password_enabled' => false,
+            'remember_me_enabled' => true,
+            'remember_me_checked' => true,
+            'remember_me_label' => 'Remember me',
         ]);
     }
 
