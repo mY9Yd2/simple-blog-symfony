@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Post;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -22,6 +23,14 @@ class AppFixtures extends Fixture
         // Default: User1234
         $user->setPassword('$2y$13$Q0hKlk0f8AQJPn6Dk/HYN.UwddH4V/pzing4QatPzubvRQX4nvIy6');
         $manager->persist($user);
+
+        for ($i = 0; $i < 10; $i++) {
+            $post = new Post();
+            $post->setTitle('Post '.$i+1);
+            $post->setBody('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod');
+            $post->setAuthor($admin);
+            $manager->persist($post);
+        }
 
         $manager->flush();
     }

@@ -1,0 +1,14 @@
+{% for post in posts %}
+    <article class="mb-5 text-center">
+        <h2>{{ post.title }}</h2>
+
+        <p>{{ post.body|slice(0, 100) ~ (post.body|length > 100 ? '...' : '') }}</p>
+
+        <small class="text-secondary">
+            <div>By {{ post.author.username }}</div>
+            <time datetime="{{ post.createdAt|date('Y-m-d H:i') }}">{{ post.createdAt|date('Y-m-d H:i') }}</time>
+        </small>
+    </article>
+{% else %}
+    <p>No posts available.</p>
+{% endfor %}

@@ -16,7 +16,9 @@
         {{ include('_navbar.html.twig') }}
 
         <div class="container">
-            {% block body %}{% endblock %}
+            <main>
+                {% block body %}{% endblock %}
+            </main>
         </div>
     </body>
 </html>
