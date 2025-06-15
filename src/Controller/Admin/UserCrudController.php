@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -37,17 +38,13 @@ class UserCrudController extends AbstractCrudController
         return [
             IdField::new('id')->onlyOnDetail(),
             TextField::new('username'),
-            ArrayField::new('roles')
-                ->formatValue(fn ($value, $entity) => $this->formatRoles($value))
+            ChoiceField::new('roles')
+                ->setChoices([
+                    'Admin' => 'ROLE_ADMIN',
+                    'User' => 'ROLE_USER',
+                ])
+                ->allowMultipleChoices()
+                ->renderExpanded()
         ];
-    }
-
-    private function formatRoles(array $roles): string
-    {
-        return implode(', ', array_map(fn ($role) => match ($role) {
-            'ROLE_ADMIN' => 'Admin',
-            'ROLE_USER' => 'User',
-            default => $role,
-        }, $roles));
     }
 }
