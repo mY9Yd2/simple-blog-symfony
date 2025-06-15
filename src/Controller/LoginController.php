@@ -25,7 +25,7 @@ class LoginController extends AbstractController
             'page_title' => 'Simple Blog',
             'csrf_token_intention' => 'authenticate',
             'target_path' => $this->generateUrl('app_home'),
-            'username_label' => 'Username',
+            'username_label' => 'Email',
             'password_label' => 'Password',
             'sign_in_label' => 'Log in',
             'username_parameter' => '_username',

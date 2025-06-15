@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -24,7 +25,8 @@ class UserCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInPlural('Users')
-            ->setEntityLabelInSingular('User');
+            ->setEntityLabelInSingular('User')
+            ->setDefaultSort(['createdAt' => 'DESC']);
     }
 
     public function configureActions(Actions $actions): Actions
@@ -38,13 +40,16 @@ class UserCrudController extends AbstractCrudController
         return [
             IdField::new('id')->onlyOnDetail(),
             TextField::new('username'),
+            TextField::new('email')->hideOnIndex(),
             ChoiceField::new('roles')
                 ->setChoices([
                     'Admin' => 'ROLE_ADMIN',
                     'User' => 'ROLE_USER',
                 ])
                 ->allowMultipleChoices()
-                ->renderExpanded()
+                ->renderExpanded(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
+            DateTimeField::new('createdAt')->hideOnForm(),
         ];
     }
 }

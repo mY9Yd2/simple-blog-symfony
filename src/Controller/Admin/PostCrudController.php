@@ -32,7 +32,7 @@ class PostCrudController extends AbstractCrudController
             IdField::new('id')->onlyOnDetail(),
             TextField::new('author.username')->setLabel('Author')->hideOnForm(),
             TextField::new('title'),
-            TextareaField::new('body')->onlyOnDetail()->onlyOnForms(),
+            TextareaField::new('body')->hideOnIndex(),
             DateTimeField::new('updatedAt')->hideOnForm(),
             DateTimeField::new('createdAt')->hideOnForm(),
         ];

@@ -2,13 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\TimestampableEntity;
 use App\Repository\PostRepository;
-use DateTimeZone;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\PrePersist;
-use Doctrine\ORM\Mapping\PreUpdate;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
 use Symfony\Bridge\Doctrine\Types\UlidType;
 use Symfony\Component\Uid\Ulid;
@@ -33,16 +30,6 @@ class Post
     #[ORM\ManyToOne(inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
-
-    #[PrePersist]
-    #[PreUpdate]
-    public function updateTimestamps(): void
-    {
-        $this->setUpdatedAt(new \DateTime());
-        if ($this->getCreatedAt() === null) {
-            $this->setCreatedAt(new \DateTime());
-        }
-    }
 
     public function __construct()
     {

@@ -12,7 +12,7 @@
                             Profile
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-item disabled">{{ app.user.userIdentifier }}</li>
+                            <li class="dropdown-item disabled">{{ app.user.username }}</li>
                             {% if is_granted('ROLE_ADMIN') %}
                             <li><a class="dropdown-item" href="{{ path('admin_post_index') }}">Admin</a></li>
                             {% endif %}
