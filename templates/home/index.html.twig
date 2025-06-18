@@ -2,6 +2,14 @@
 
 {% block title %}Simple Blog{% endblock %}
 
+{% block head %}
+    {{ knp_pagination_rel_links(posts) }}
+{% endblock %}
+
 {% block body %}
     {{ include('home/_post_list.html.twig') }}
+
+    <div class="d-flex justify-content-center">
+        {{ knp_pagination_render(posts, '@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
+    </div>
 {% endblock %}

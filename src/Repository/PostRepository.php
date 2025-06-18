@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,14 +17,13 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function findAllPublishedBy(\DateTimeInterface $endDate): array
+    public function getPublishedByQuery(\DateTimeInterface $endDate): Query
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.publishedAt <= :endDate')
             ->setParameter('endDate', $endDate)
             ->orderBy('p.publishedAt', 'DESC')
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
     //    /**

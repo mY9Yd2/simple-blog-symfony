@@ -11,6 +11,9 @@
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
+
+        {% block head %}
+        {% endblock %}
     </head>
     <body>
         {{ include('_navbar.html.twig') }}
