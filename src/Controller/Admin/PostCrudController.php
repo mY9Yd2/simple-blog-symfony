@@ -7,7 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PostCrudController extends AbstractCrudController
@@ -31,7 +31,7 @@ class PostCrudController extends AbstractCrudController
             IdField::new('id')->onlyOnDetail(),
             TextField::new('author.username')->setLabel('Author')->hideOnForm(),
             TextField::new('title'),
-            TextareaField::new('body')->hideOnIndex(),
+            TextEditorField::new('body')->hideOnIndex(),
             DateTimeField::new('updatedAt')->hideOnForm(),
             DateTimeField::new('createdAt')->hideOnForm(),
             DateTimeField::new('publishedAt'),
