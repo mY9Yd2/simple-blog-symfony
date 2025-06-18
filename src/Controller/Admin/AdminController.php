@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Post;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -58,5 +59,11 @@ class AdminController extends AbstractDashboardController
     {
         return Crud::new()
             ->setDateTimeFormat('Y-MM-dd HH:mm');
+    }
+
+    public function configureAssets(): Assets
+    {
+        return Assets::new()
+            ->addAssetMapperEntry('adminPanel');
     }
 }

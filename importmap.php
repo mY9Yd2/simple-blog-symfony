@@ -16,6 +16,10 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    'adminPanel' => [
+        'path' => './assets/adminPanel.js',
+        'entrypoint' => true,
+    ],
     'bootstrap' => [
         'version' => '5.3.6',
     ],
