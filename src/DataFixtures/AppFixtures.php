@@ -31,6 +31,7 @@ class AppFixtures extends Fixture
             $post->setTitle('Post '.$i+1);
             $post->setBody('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod');
             $post->setAuthor($admin);
+            $post->setPublishedAt(new \DateTimeImmutable());
             $manager->persist($post);
         }
 

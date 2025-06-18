@@ -22,7 +22,7 @@ class PostCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInPlural('Posts')
             ->setEntityLabelInSingular('Post')
-            ->setDefaultSort(['updatedAt' => 'DESC']);
+            ->setDefaultSort(['updatedAt' => 'DESC', 'publishedAt' => 'DESC']);
     }
 
     public function configureFields(string $pageName): iterable
@@ -34,6 +34,7 @@ class PostCrudController extends AbstractCrudController
             TextareaField::new('body')->hideOnIndex(),
             DateTimeField::new('updatedAt')->hideOnForm(),
             DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('publishedAt'),
         ];
     }
 

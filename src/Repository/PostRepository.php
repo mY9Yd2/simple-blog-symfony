@@ -16,6 +16,16 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    public function findAllPublishedBy(\DateTimeInterface $endDate): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.publishedAt <= :endDate')
+            ->setParameter('endDate', $endDate)
+            ->orderBy('p.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Post[] Returns an array of Post objects
     //     */
