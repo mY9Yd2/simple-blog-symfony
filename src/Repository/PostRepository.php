@@ -17,13 +17,19 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function getPublishedByQuery(\DateTimeInterface $endDate): Query
+    public function createPublishedQuery(\DateTimeInterface $endDate, ?string $search = null): Query
     {
-        return $this->createQueryBuilder('p')
+        $query = $this->createQueryBuilder('p')
             ->andWhere('p.publishedAt <= :endDate')
             ->setParameter('endDate', $endDate)
-            ->orderBy('p.publishedAt', 'DESC')
-            ->getQuery();
+            ->orderBy('p.publishedAt', 'DESC');
+
+        if ($search) {
+            $query->andWhere('p.title LIKE :search OR p.body LIKE :search')
+                ->setParameter('search', '%'.$search.'%');
+        }
+
+        return $query->getQuery();
     }
 
     //    /**
