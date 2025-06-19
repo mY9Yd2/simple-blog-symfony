@@ -36,7 +36,7 @@ class PostCrudController extends AbstractCrudController
             DateTimeField::new('createdAt')->hideOnForm(),
             DateTimeField::new('publishedAt')
                 ->setFormTypeOption('model_timezone', 'UTC')
-                ->setFormTypeOption('view_timezone', 'Europe/Budapest'),
+                ->setFormTypeOption('view_timezone', $this->getUser()->getTimezone()),
         ];
     }
 

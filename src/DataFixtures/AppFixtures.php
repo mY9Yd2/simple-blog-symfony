@@ -17,6 +17,7 @@ class AppFixtures extends Fixture
         $admin->setEmail('bob@example.com');
         // Default: Admin1234
         $admin->setPassword('$2y$13$dFa7iqMg9WEZ/gXjFG1J0.1ZWgV3zLPnFKsIszUzo0/hADOdIH0tG');
+        $admin->setTimezone('Europe/Budapest');
         $manager->persist($admin);
 
         $user = new User();
@@ -24,6 +25,7 @@ class AppFixtures extends Fixture
         $user->setEmail('alice@example.com');
         // Default: User1234
         $user->setPassword('$2y$13$Q0hKlk0f8AQJPn6Dk/HYN.UwddH4V/pzing4QatPzubvRQX4nvIy6');
+        $user->setTimezone('Europe/Budapest');
         $manager->persist($user);
 
         for ($i = 0; $i < 10; $i++) {
