@@ -34,7 +34,9 @@ class PostCrudController extends AbstractCrudController
             TextEditorField::new('body')->hideOnIndex(),
             DateTimeField::new('updatedAt')->hideOnForm(),
             DateTimeField::new('createdAt')->hideOnForm(),
-            DateTimeField::new('publishedAt'),
+            DateTimeField::new('publishedAt')
+                ->setFormTypeOption('model_timezone', 'UTC')
+                ->setFormTypeOption('view_timezone', 'Europe/Budapest'),
         ];
     }
 
