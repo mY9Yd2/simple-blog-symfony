@@ -58,7 +58,8 @@ class AdminController extends AbstractDashboardController
     public function configureCrud(): Crud
     {
         return Crud::new()
-            ->setDateTimeFormat('Y-MM-dd HH:mm');
+            ->setDateTimeFormat('Y-MM-dd, HH:mm')
+            ->setTimezone($this->getUser()->getTimezone());
     }
 
     public function configureAssets(): Assets
