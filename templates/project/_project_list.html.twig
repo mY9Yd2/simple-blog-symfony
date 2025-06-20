@@ -1,0 +1,9 @@
+<div class="row g-4 mt-2 mb-4">
+    {% for project in projects %}
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 text-center">
+            <a class="h3 link-underline link-underline-opacity-0" href="{{ project.downloadUrl }}">{{ project.title }}</a>
+        </div>
+    {% else %}
+        <p class="text-center h4 my-5">No projects available.</p>
+    {% endfor %}
+</div>

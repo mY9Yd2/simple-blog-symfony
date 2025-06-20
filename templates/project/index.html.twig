@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Simple Blog - Projects{% endblock %}
+
+{% block head %}
+    {{ knp_pagination_rel_links(projects) }}
+{% endblock %}
+
+{% block body %}
+    {{ include('project/_project_list.html.twig') }}
+
+    <div class="d-flex justify-content-center">
+        {{ knp_pagination_render(projects, '@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
+    </div>
+{% endblock %}
