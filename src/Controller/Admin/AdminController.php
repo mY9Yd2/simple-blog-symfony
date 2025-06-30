@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Post;
+use App\Entity\Project;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -51,6 +52,7 @@ class AdminController extends AbstractDashboardController
 
         yield MenuItem::section('Website');
         yield MenuItem::linkToCrud('Posts', 'fa-solid fa-newspaper', Post::class);
+        yield MenuItem::linkToCrud('Projects', 'fa-solid fa-users', Project::class);
         yield MenuItem::linkToCrud('Users', 'fa-solid fa-users', User::class);
     }
 
